@@ -1,74 +1,81 @@
 # UbiBot Open Doc
 
-UbiBot Open 项目（`ubibot-open` 组织）的配置与技术文档仓库，收录跨仓库、不适合放在单个代码仓库里的文档：设备通信协议、系统部署/烧录/联调指南等。
+Configuration and technical documentation repository for the UbiBot Open project (`ubibot-open` org): documentation that spans multiple repos and doesn't belong in any single code repo — the device communication protocol, the system deployment/flashing/bring-up guide, and so on.
 
-## 目录
+## Contents
 
-- [硬件通信协议](protocol/UbiBot开放平台硬件通信协议.md) — 设备↔服务端 HTTP 协议的权威定义，含蓝牙配网、时间同步、数据上传、错误码等章节。
-- [系统部署烧录联调指南](guides/系统部署烧录联调指南.md) — 从零跑通"后端部署 → 固件烧录 → 串口调试 → 设备联网上报 → 后台可见"全链路的操作手册。
+- [Hardware Communication Protocol](protocol/hardware-communication-protocol.md) — the authoritative definition of the device↔server HTTP protocol: provisioning, time sync, data upload, error codes, and more.
+- [System Deployment, Flashing & Bring-up Guide](guides/deployment-flashing-guide.md) — a hands-on manual for going from zero to "backend deployed → firmware flashed → serial debugging → device online and reporting → visible on the dashboard".
 
-## 相关仓库
+## Related Repositories
 
-| 仓库 | 说明 |
+| Repository | Description |
 |---|---|
-| [ubibot-open-server](https://github.com/ubibot-open/ubibot-open-server) | 设备接入后端 + 管理后台（Go + React），单一可执行文件部署 |
-| [ubibot-open-ws1b](https://github.com/ubibot-open/ubibot-ws1b) | WS1B 设备开源参考固件（ESP-IDF，ESP32-C5） |
-| [ubibot-serial-sync](https://github.com/ubibot-open/ubibot-serial-sync) | 跨平台桌面端串口调试工具 |
+| [ubibot-open-server](https://github.com/ubibot-open/ubibot-open-server) | Device-facing backend + admin console (Go + React), deployed as a single binary |
+| [ubibot-open-ws1b](https://github.com/ubibot-open/ubibot-ws1b) | Open-source reference firmware for the WS1B device (ESP-IDF, ESP32-C5) |
+| [ubibot-serial-sync](https://github.com/ubibot-open/ubibot-serial-sync) | Cross-platform desktop serial debugging tool |
 
 
-## 快速开始
+## Quick Start
 
-跟着下面 4 步，从零跑通"服务器起来 → 硬件烧录 → 联网上报 → 后台看到数据"的完整链路。
-每一步的详细说明、可选参数和踩坑排查见 [系统部署烧录联调指南](guides/系统部署烧录联调指南.md)；
-手头没有真实设备也可以先跳到第 4 步前的"没有硬件？"小节，用内置仿真器走通 1、4 两步。
+Follow these 4 steps to go from zero to "server running → hardware flashed → reporting over the
+network → data visible on the dashboard". See the
+[Deployment, Flashing & Bring-up Guide](guides/deployment-flashing-guide.md) for details, optional
+parameters, and troubleshooting for each step. No hardware on hand? Skip ahead to "No hardware?"
+right before step 4 — the built-in simulator lets you complete steps 1 and 4 on their own.
 
-### 1. 部署服务器
+### 1. Deploy the server
 
 ```bash
 git clone https://github.com/ubibot-open/ubibot-open-server.git ubibot-open-server
 cd ubibot-open-server
-./build.sh        # Windows 用 .\build.ps1；需要 Go 1.23+ 和 Node.js/npm
-./ubibot-server    # 默认监听 :8080
+./build.sh        # Windows: .\build.ps1; requires Go 1.23+ and Node.js/npm
+./ubibot-server    # listens on :8080 by default
 ```
 
-浏览器打开 `http://localhost:8080`。首次启动会在日志里打印一次性生成的 `admin` 密码
-（例如 `no admin account found — created "admin" with a generated password: ...`），
-记得当场记下来，只显示这一次。详见指南 §2。
+Open `http://localhost:8080` in a browser. On first run, the log prints a one-time generated
+`admin` password (e.g. `no admin account found — created "admin" with a generated password: ...`)
+— write it down right away, it's only shown once. See guide §2 for details.
 
-### 2. 编译烧录硬件
+### 2. Build and flash the hardware
 
 ```bash
 git clone https://github.com/ubibot-open/ubibot-ws1b.git ubibot-open-ws1b
 cd ubibot-open-ws1b
 idf.py set-target esp32c5
-idf.py menuconfig      # 见下一步"配置硬件"，改完保存退出再继续
+idf.py menuconfig      # see "Configure the hardware" below; save and exit, then continue
 idf.py build
-idf.py -p <串口号> flash monitor
+idf.py -p <port> flash monitor
 ```
 
-需要预先装好 **ESP-IDF v6.0.2**（目标芯片 **ESP32-C5**）并激活好环境变量
-（`export.sh`/`export.ps1`）。`<串口号>` 例如 Windows 的 `COM5`、Linux 的 `/dev/ttyUSB0`。
+Requires **ESP-IDF v6.0.2** (target chip **ESP32-C5**) with its environment activated
+(`export.sh`/`export.ps1`). `<port>` is e.g. `COM5` on Windows or `/dev/ttyUSB0` on Linux.
 
-### 3. 配置硬件
+### 3. Configure the hardware
 
-上一步 `idf.py menuconfig` 里进入 `UbiBot WS1B Configuration` 菜单，至少要改这 3 项再保存：
+In `idf.py menuconfig` from the previous step, go to the `UbiBot WS1B Configuration` menu and set
+at least these 3 items before saving:
 
-| 配置项 | 改成什么 |
+| Setting | What to set it to |
 |---|---|
-| WiFi SSID / Password | 现场实际要连的 WiFi |
-| Data server host / port | 第 1 步部署的服务器地址，默认端口 `8080` |
-| Device serial number (SN) | 每台设备唯一，不要和其他设备重复 |
+| WiFi SSID / Password | The WiFi you're actually connecting to on site |
+| Data server host / port | The server address from step 1, default port `8080` |
+| Device serial number (SN) | Unique per device — never reuse across devices |
 
-完整配置项（含国家码、产品型号等）见指南 §3.2。改完回到第 2 步继续 `build`/`flash`。
+See guide §3.2 for the full list of settings (country code, product ID, etc.). Once done, go back
+to step 2 and continue with `build`/`flash`.
 
-### 4. 查看数据
+### 4. View the data
 
-设备联网上报成功后，回到第 1 步打开的管理后台，设备列表里会自动出现刚才配置的 SN——
-不需要在后台预先创建设备；点进去能看到最新一条数据，"数据仓库"页可以看所有设备的最新记录。
+Once the device is online and reporting, go back to the admin console opened in step 1 — the SN
+you just configured appears automatically in the device list, no need to create the device
+beforehand. Open it to see the latest reading, or check the "Data Warehouse" page for the latest
+record from every device.
 
-没看到设备？按指南的[端到端验证](guides/系统部署烧录联调指南.md#5-端到端验证设备联网并上报数据)
-三步排查（WiFi 是否连上 → 上报是否成功 → 后台是否可见）。
+Not seeing the device? Walk through the guide's
+[end-to-end verification](guides/deployment-flashing-guide.md#5-end-to-end-verification-device-online-and-reporting)
+— three checks (WiFi connected → report succeeded → visible on the dashboard).
 
-> **没有硬件？** `ubibot-open-server/simulation` 目录自带一个纯 C 编写的设备仿真程序，
-> 协议行为和真实固件完全一致，可以跳过第 2、3 步直接验证服务器和后台，见指南 §6。
-
+> **No hardware?** `ubibot-open-server/simulation` ships a pure-C device simulator with protocol
+> behavior identical to the real firmware, letting you verify the server and dashboard without
+> steps 2–3. See guide §6.
