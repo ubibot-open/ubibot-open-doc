@@ -47,9 +47,11 @@ WiFi and server configuration is done exclusively through serial provisioning (�
 
 The device accepts a set of text commands over its USB/UART serial port. Paired with
 `ubibot-serial-sync` (or any serial terminal at the same baud rate as the firmware's log output —
-115200 by default on the ESP-IDF reference firmware), this lets you set WiFi and server address
-on site without recompiling or reflashing. Commands are single-line, UTF-8-encoded JSON sent over
-the serial port.
+115200 by default on the ESP-IDF reference firmware), this lets you set WiFi, server address, and
+the device's own serial number on site without recompiling or reflashing — in particular, it's
+what lets one compiled firmware image (one pid, no sn baked in) be flashed onto a whole production
+batch, with each physical unit's own sn set afterward over serial. Commands are single-line,
+UTF-8-encoded JSON sent over the serial port.
 
 **Set the network**
 
@@ -75,6 +77,20 @@ the serial port.
 | command | string | Yes | Fixed value `SetupServer` |
 | host | string | Yes | Server IP address or domain name — the backend §2 (Transport) talks to |
 | port | number | Yes | Server listening port |
+
+**Set the device's serial number**
+
+```json
+{"command":"SetupDevice","sn":"RV41554WS1B"}
+```
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| command | string | Yes | Fixed value `SetupDevice` |
+| sn | string | Yes | The device's own serial number (§3) |
+
+There is no way to set `pid` this way — every unit built from the same firmware image is expected
+to share it; only `sn` is meant to vary per physical unit.
 
 **Response (ACK)**: after processing each command, the device writes back one line of JSON over
 the same serial port:

@@ -161,17 +161,21 @@ Go to the `UbiBot WS1B Configuration` menu and set as needed:
 | | WiFi country code | `01` | Two-letter regulatory country code (e.g. `CN`/`US`), or `01` for the world-safe default |
 | Server Configuration | Data server host | `192.168.2.71` | IP/domain of the backend deployed in step 2 |
 | | Data server port | `8080` | Must match the backend's `UBIBOT_LISTEN_ADDR` port |
-| Device Identity | Device product ID | `ubibot-ws1b` | Can be shared across devices of the same model |
-| | Device serial number | `RV41554WS1B` | **Must be changed to a unique value per physical device** — don't reuse one SN across a production batch |
+| Device Identity | Device product ID | `ubibot-ws1b` | Shared across every device of this model — leave as-is for a whole production batch |
+| | Device serial number | `RV41554WS1B` | Must be unique per physical device — but see the note below, you don't have to change this per build to get that |
 
 Settings are saved to the local `sdkconfig` file (gitignored, never committed); defaults are
 defined in `main/Kconfig.projbuild`.
 
 > **These are only factory defaults**: the menuconfig settings in this section are baked into
-> `sdkconfig` at build time, and only serve as the default WiFi/server address the first time the
-> device is flashed. After flashing, they can also be overridden at **runtime** over serial using
-> the [Hardware Communication Protocol](../protocol/hardware-communication-protocol.md) §1.2
-> `SetupWifi`/`SetupServer` commands, without recompiling or reflashing — see section 4. Bluetooth
+> `sdkconfig` at build time, and only serve as the default WiFi/server/serial-number the first
+> time the device is flashed. After flashing, they can also be overridden at **runtime** over
+> serial using the [Hardware Communication Protocol](../protocol/hardware-communication-protocol.md)
+> §1.2 `SetupWifi`/`SetupServer`/`SetupDevice` commands, without recompiling or reflashing — see
+> section 4. In particular, `SetupDevice` sets just the serial number, which means you can flash
+> an entire production batch from **one build** (sharing the same `pid` and the same default
+> `sn`) and give each physical unit its own real `sn` afterward over serial, instead of
+> recompiling once per unit. Bluetooth
 > provisioning (protocol §1.1) remains explicitly unsupported; serial provisioning is currently
 > the only runtime provisioning method.
 
@@ -234,6 +238,9 @@ send this **right after power-cycling or resetting the device**:
 {"command":"SetupWifi","ssid":"MyHomeWiFi","password":"12345678","type":"WPA2"}
 // Change the server address
 {"command":"SetupServer","host":"192.168.2.71","port":8080}
+// Set this unit's own serial number — the batch-flashing workflow from §3.2:
+// flash every unit from one build, then give each its own sn afterward
+{"command":"SetupDevice","sn":"RV41554WS1B"}
 ```
 
 After processing each command, the device writes back one line of JSON ack in the data monitor
