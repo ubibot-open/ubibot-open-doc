@@ -79,3 +79,12 @@ Not seeing the device? Walk through the guide's
 > **No hardware?** `ubibot-open-server/simulation` ships a pure-C device simulator with protocol
 > behavior identical to the real firmware, letting you verify the server and dashboard without
 > steps 2–3. See guide §6.
+
+## Contributing
+
+Documentation fixes and additions are welcome — see the
+[org-wide CONTRIBUTING.md](https://github.com/ubibot-open/.github/blob/main/CONTRIBUTING.md).
+
+## License
+
+[Apache License 2.0](LICENSE).
