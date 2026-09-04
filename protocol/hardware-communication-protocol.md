@@ -19,9 +19,12 @@ Compared to earlier versions, this revision:
   request identifies itself with pid+sn directly and completes the write in one request. A
   lightweight, unauthenticated time-sync endpoint is kept, so a device with no local clock can
   fetch the current time.
-- Removes the command-dispatch channel: the platform no longer pushes control commands like
-  reboot / calibrate / set_probe / OTA to devices. These aren't necessary for the core "get data
-  flowing" goal, and are rarely needed in teaching/demo scenarios either.
+- Removes the original, much larger command-dispatch channel: config polling, custom probe
+  configuration, and OTA are all still out of scope, not necessary for the core "get data flowing"
+  goal and rarely needed in teaching/demo scenarios. A deliberately narrow exception was added
+  back later (§9): an admin can queue a `reboot` or `set_interval` command, delivered piggybacked
+  on the device's own next report with no ack — not a general push channel, just enough to avoid
+  a physical reflash for those two things.
 - Uploaded data no longer uses named fields like `temperature`/`humidity` — it's unified into
   `field1`–`field20` (20 max), which the platform stores as-is without caring about their business
   meaning. `field1`/`field2`/`field3` carry a conventional default meaning (temperature/humidity/
@@ -294,6 +297,55 @@ behavior, to help make sense of the "auto-create/disable" behavior mentioned in 
 | 429 | 1900 | Rate limited | Drop this report; wait for the next cycle |
 | 5xx | 5000 | Server-side failure | Retry on the next upload cycle |
 
+### 9. Command Delivery (admin-triggered, optional)
+
+This is the one exception to §0/§2's "no channel from the server to the device" stance, and it's
+deliberately narrow: an admin can queue **at most one** command per device from the admin console,
+and it is delivered piggybacked on that device's **next `POST /api/v1/data/report` response** —
+no new endpoint, no device-initiated polling, no push. A device that never looks for this field
+is completely unaffected; everything about §2–§8 is unchanged.
+
+**Response with a queued command** (§5's normal response, with an added `cmd` field):
+
+```json
+{ "c": 0, "t": 1788950400, "cmd": { "action": "reboot" } }
+```
+
+```json
+{ "c": 0, "t": 1788950400, "cmd": { "action": "set_interval", "seconds": 600 } }
+```
+
+| Field | Description |
+| --- | --- |
+| cmd | Present only when a command is queued for this device — omitted entirely (not `null`) otherwise |
+| cmd.action | `reboot` or `set_interval` — see below |
+| cmd.seconds | Only present for `set_interval`: the new report interval, in seconds |
+
+| action | Device behavior |
+| --- | --- |
+| `reboot` | Restart immediately |
+| `set_interval` | Persist the new interval (e.g. to NVS) and apply it starting with the *next* sleep/report cycle — the one already under way finishes with whatever interval was active when it started |
+
+**Delivery semantics — read this before building on it**:
+- **At most one command queued per device.** Queuing a new one overwrites whatever hadn't been
+  delivered yet; there is no queue/backlog of multiple commands.
+- **Delivered once, then cleared — fire-and-forget.** The moment a command is embedded in a
+  report response, the platform considers it delivered and clears it, whether or not the device
+  actually receives or applies it (a dropped response, a device that crashes before acting on it,
+  etc. all look the same to the platform: "delivered"). There is no ack, retry, or delivery
+  confirmation of any kind.
+- **No bound on how long a command can sit queued.** It's delivered on whatever the device's next
+  report happens to be — immediately if it reports every few minutes, or not for a long time if
+  it reports rarely or is offline.
+- `seconds` bounds (how small/large a `set_interval` value is accepted) are an **admin-API-level**
+  concern, not part of this wire format — a device should trust whatever value the field carries.
+
+The response format and effective-timing behavior above reflect the `ubibot-open-ws1b` reference
+firmware's implementation (see
+[main/command.c](https://github.com/ubibot-open/ubibot-ws1b/blob/main/main/command.c) in that
+repository). Other firmware implementations are encouraged to follow the same convention for
+consistency, but it isn't mandatory.
+
 ### Appendix: Capabilities Removed in This Revision
 
 To match the scope adjustments above, the following capabilities that existed in earlier versions
@@ -302,8 +354,10 @@ of this protocol have been removed entirely and are no longer part of this proje
   targeting a trusted internal-network environment, this has been simplified further down to
   plain-text pid+sn device identification, with no signature/key check at all.
 - Session tokens and their renewal.
-- The entire channel for the server to push control commands to a device (the former `cmd`
-  field), including config polling (formerly `/device/poll`), custom probe read configuration
-  (formerly `set_probe`), and firmware OTA updates.
+- The original, much larger channel for the server to push control commands to a device,
+  including config polling (formerly `/device/poll`), custom probe read configuration (formerly
+  `set_probe`), and firmware OTA updates. **§9 later reintroduced a deliberately narrow `cmd`
+  field** (reboot / set report interval only, piggybacked on the report response, no ack) — the
+  rest of the original channel remains out of scope.
 - The self-service device activation approval / key-binding flow (including encrypted submission
   and RSA key pairs).

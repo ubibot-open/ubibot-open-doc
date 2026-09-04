@@ -108,6 +108,14 @@ working without waiting on real hardware to come online.
 Open `http://localhost:8080` in a browser (the API and admin console are served from the same
 process and port), and log in with the `admin` account/password from the previous step.
 
+### 2.5 Sending a command to a device (optional)
+
+Once a device has reported at least once and shows up in the device list, open its detail page —
+the **Device Commands** card lets you queue a **reboot** or a new **report interval** (60–86400
+seconds). This is the protocol §9 command channel: whatever you queue is delivered piggybacked on
+that device's *next* report, then cleared — there's no ack, so the platform can't confirm the
+device actually received or applied it. If in doubt, just queue it again.
+
 ## 3. Flash the WS1B Reference Firmware (ubibot-open-ws1b)
 
 ### 3.1 Get the source and install ESP-IDF
