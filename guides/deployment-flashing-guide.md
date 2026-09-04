@@ -116,6 +116,21 @@ seconds). This is the protocol §9 command channel: whatever you queue is delive
 that device's *next* report, then cleared — there's no ack, so the platform can't confirm the
 device actually received or applied it. If in doubt, just queue it again.
 
+### 2.6 Products and batch device management (optional)
+
+For more than a handful of devices:
+
+- **Products** (Device Management → Products) — register a `pid` once with a display name and
+  description, and every device reporting that `pid` shows a resolved product name in the device
+  list/detail instead of a raw `pid`. Purely display metadata: creating, renaming, or deleting a
+  product never touches any device row.
+- **Batch import** (Devices → Batch Import) — paste or upload a CSV of `sn,pid,name` rows (name
+  optional) to pre-register a production batch ahead of time, before any of them have ever
+  reported. Also purely a convenience: a device that's never imported still appears on its own the
+  moment it first reports.
+- **Export** (Devices → Export CSV) — downloads the entire fleet (not just the current page) as
+  CSV.
+
 ## 3. Flash the WS1B Reference Firmware (ubibot-open-ws1b)
 
 ### 3.1 Get the source and install ESP-IDF

@@ -280,11 +280,19 @@ behavior, to help make sense of the "auto-create/disable" behavior mentioned in 
 
 - A device automatically appears in the admin console's device list the first time it
   successfully reports data — no need to create it beforehand.
+- An admin can also **optionally** pre-register a batch of devices ahead of time (e.g. from a
+  production run's serial-number list) via a bulk import — purely a naming/tagging convenience,
+  not a prerequisite: an un-imported device still appears on its own the moment it first reports,
+  exactly as above. A pre-registered device is matched by `sn` against the real device's first
+  report, same as any other.
 - An admin can rename a device, view its historical data, enable/disable it, or delete it along
-  with all of its data from the console.
+  with all of its data from the console, and can group devices under a **Product** (a name/
+  description for a device type/model, resolved by matching `pid` — display metadata only, not a
+  prerequisite for a device to report either).
 - Once a device is disabled, all of its subsequent report requests are rejected (data is no
   longer processed); re-enabling it restores normal behavior.
-- Deleting a device permanently deletes it along with all of its historical data.
+- Deleting a device permanently deletes it along with all of its historical data. Deleting a
+  Product only removes its display metadata — devices matched to its `pid` are unaffected.
 
 ### 8. Error Handling
 
