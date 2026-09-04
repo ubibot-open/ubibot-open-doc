@@ -275,12 +275,13 @@ working end to end.
 
 ## 6. Testing Without Real Hardware (optional)
 
-The `ubibot-open-server` repo ships a pure-C device simulator (`simulation/` directory) with
-protocol behavior identical to the real firmware — useful when you don't have hardware on hand,
-or just want to quickly verify a backend/dashboard change:
+[ubibot-open-simulator](https://github.com/ubibot-open/ubibot-open-simulator) is a pure-C device
+simulator, in its own repository, with protocol behavior identical to the real firmware — useful
+when you don't have hardware on hand, or just want to quickly verify a backend/dashboard change:
 
 ```bash
-cd ubibot-open-server/simulation
+git clone https://github.com/ubibot-open/ubibot-open-simulator.git
+cd ubibot-open-simulator
 cmake -S . -B build
 cmake --build build
 ./build/ub_device_sim --host 127.0.0.1 --port 8080

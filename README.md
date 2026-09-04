@@ -16,6 +16,7 @@ Configuration and technical documentation repository for the UbiBot Open project
 | [ubibot-open-server](https://github.com/ubibot-open/ubibot-open-server) | Device-facing backend + admin console (Go + React), deployed as a single binary |
 | [ubibot-open-ws1b](https://github.com/ubibot-open/ubibot-ws1b) | Open-source reference firmware for the WS1B device (ESP-IDF, ESP32-C5) |
 | [ubibot-serial-sync](https://github.com/ubibot-open/ubibot-serial-sync) | Cross-platform desktop serial debugging tool |
+| [ubibot-open-simulator](https://github.com/ubibot-open/ubibot-open-simulator) | Pure-C, host-buildable device simulator speaking the same protocol as the real firmware — no hardware needed |
 
 
 ## Quick Start
@@ -24,7 +25,8 @@ Follow these 4 steps to go from zero to "server running → hardware flashed →
 network → data visible on the dashboard". See the
 [Deployment, Flashing & Bring-up Guide](guides/deployment-flashing-guide.md) for details, optional
 parameters, and troubleshooting for each step. No hardware on hand? Skip ahead to "No hardware?"
-right before step 4 — the built-in simulator lets you complete steps 1 and 4 on their own.
+right before step 4 — the [device simulator](https://github.com/ubibot-open/ubibot-open-simulator)
+lets you complete steps 1 and 4 on their own.
 
 ### 1. Deploy the server
 
@@ -78,9 +80,9 @@ Not seeing the device? Walk through the guide's
 [end-to-end verification](guides/deployment-flashing-guide.md#5-end-to-end-verification-device-online-and-reporting)
 — three checks (WiFi connected → report succeeded → visible on the dashboard).
 
-> **No hardware?** `ubibot-open-server/simulation` ships a pure-C device simulator with protocol
-> behavior identical to the real firmware, letting you verify the server and dashboard without
-> steps 2–3. See guide §6.
+> **No hardware?** [ubibot-open-simulator](https://github.com/ubibot-open/ubibot-open-simulator)
+> is a pure-C device simulator with protocol behavior identical to the real firmware, letting you
+> verify the server and dashboard without steps 2–3. See guide §6.
 
 ## Contributing
 

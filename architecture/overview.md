@@ -5,13 +5,14 @@ This is the "how does it all fit together" document. For step-by-step setup see 
 wire format see the [hardware communication protocol](../protocol/hardware-communication-protocol.md).
 This page assumes you've read neither and just want the shape of the system first.
 
-## The four repositories
+## The five repositories
 
 | Repo | Role | Stack |
 |---|---|---|
 | [ubibot-open-server](https://github.com/ubibot-open/ubibot-open-server) | Device-facing HTTP backend + the admin console, compiled into one binary | Go, React/TypeScript |
 | [ubibot-open-ws1b](https://github.com/ubibot-open/ubibot-open-ws1b) | Reference firmware for the WS1B sensor device | C, ESP-IDF (ESP32-C5) |
 | [ubibot-serial-sync](https://github.com/ubibot-open/ubibot-serial-sync) | Desktop tool for serial log viewing, debugging, and device provisioning | C++, Qt 6/QML |
+| [ubibot-open-simulator](https://github.com/ubibot-open/ubibot-open-simulator) | From-scratch, host-buildable device simulator speaking the exact same protocol as the firmware — no hardware needed, and a compact worked example of the whole device-side protocol in ~7 files | C |
 | ubibot-open-doc (this repo) | Everything above: protocol spec, deployment guide, this overview | Markdown |
 
 Each repo is deployed and versioned independently. The only things that couple them are the wire
@@ -91,9 +92,6 @@ server/
     webui/          embeds admin/'s Vite build output into the Go binary via go:embed
 admin/              the React admin console (Vite + TypeScript + Ant Design), built separately
                      and embedded into the server binary by build.sh/build.ps1
-simulation/         a from-scratch C device simulator speaking the exact same protocol — useful
-                     for testing the backend without real hardware, and as a compact worked
-                     example of the whole device-side protocol in ~7 files
 ```
 
 A few things worth knowing before reading the code:
