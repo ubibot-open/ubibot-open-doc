@@ -4,8 +4,10 @@ Configuration and technical documentation repository for the UbiBot Open project
 
 ## Contents
 
+- [Architecture Overview](architecture/overview.md) — how the four repos fit together: system diagram, data flow, backend/firmware internal layout, and the design principles the codebase leans on.
 - [Hardware Communication Protocol](protocol/hardware-communication-protocol.md) — the authoritative definition of the device↔server HTTP protocol: provisioning, time sync, data upload, error codes, and more.
 - [System Deployment, Flashing & Bring-up Guide](guides/deployment-flashing-guide.md) — a hands-on manual for going from zero to "backend deployed → firmware flashed → serial debugging → device online and reporting → visible on the dashboard".
+- [Admin API Reference](api/admin-api.md) / [Open API Reference](api/open-api.md) — every HTTP route the backend exposes, for the admin console's own API and the read-only third-party integration surface respectively.
 
 ## Related Repositories
 
