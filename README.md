@@ -4,10 +4,17 @@ Configuration and technical documentation repository for the UbiBot Open project
 
 ## Contents
 
-- [Architecture Overview](architecture/overview.md) — how the four repos fit together: system diagram, data flow, backend/firmware internal layout, and the design principles the codebase leans on.
+- [Architecture Overview](architecture/overview.md) — how the five repos fit together: system diagram, data flow, backend/firmware internal layout, and the design principles the codebase leans on.
 - [Hardware Communication Protocol](protocol/hardware-communication-protocol.md) — the authoritative definition of the device↔server HTTP protocol: provisioning, time sync, data upload, error codes, and more.
-- [System Deployment, Flashing & Bring-up Guide](guides/deployment-flashing-guide.md) — a hands-on manual for going from zero to "backend deployed → firmware flashed → serial debugging → device online and reporting → visible on the dashboard".
+- [System Deployment, Flashing & Bring-up Guide](guides/deployment-flashing-guide.md) — a hands-on reference for going from zero to "backend deployed → firmware flashed → serial debugging → device online and reporting → visible on the dashboard".
+- [User Manual](manual/README.md) ([中文](manual/README.zh-CN.md)) — the same journey as the deployment guide, but tutorial-style with screenshots, plus day-to-day admin console usage (devices, products, commands, alerts, users, API keys).
+- [Developer Handbook](dev-guide/README.md) ([中文](dev-guide/README.zh-CN.md)) — task-oriented walkthroughs for modifying the platform's code: adding an API endpoint, a data model, an admin console page, or a new firmware command.
 - [Admin API Reference](api/admin-api.md) / [Open API Reference](api/open-api.md) — every HTTP route the backend exposes, for the admin console's own API and the read-only third-party integration surface respectively.
+
+Most of this repo is English-only; the **User Manual** and **Developer Handbook** are the
+exception and ship a Chinese translation alongside the English original — every chapter file has
+a language-switcher link at the top (`*[中文](...)*` / `*[English](...)*`) pointing at its
+counterpart.
 
 ## Related Repositories
 
@@ -24,9 +31,11 @@ Configuration and technical documentation repository for the UbiBot Open project
 Follow these 4 steps to go from zero to "server running → hardware flashed → reporting over the
 network → data visible on the dashboard". See the
 [Deployment, Flashing & Bring-up Guide](guides/deployment-flashing-guide.md) for details, optional
-parameters, and troubleshooting for each step. No hardware on hand? Skip ahead to "No hardware?"
-right before step 4 — the [device simulator](https://github.com/ubibot-open/ubibot-open-simulator)
-lets you complete steps 1 and 4 on their own.
+parameters, and troubleshooting for each step — or the [User Manual](manual/README.md) for the
+same steps with screenshots (also in [中文](manual/README.zh-CN.md)). No hardware on hand? Skip
+ahead to "No hardware?" right before step 4 — the
+[device simulator](https://github.com/ubibot-open/ubibot-open-simulator) lets you complete steps
+1 and 4 on their own.
 
 ### 1. Deploy the server
 
