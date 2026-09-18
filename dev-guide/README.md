@@ -6,8 +6,8 @@ Task-oriented walkthroughs for changing the platform's code, not just running it
 [Architecture Overview](../architecture/overview.md) if you haven't already — it explains how the
 pieces fit together; this handbook assumes that context and gets straight to "how do I add X".
 
-> **Status:** Outline only. Each linked chapter below is a stub — the writing is happening one
-> chapter at a time; see each page for its current state.
+> **Status:** Chapters 0–2 are written. The rest are outline-only stubs for now — the writing is
+> happening one chapter at a time; see each page for its current state.
 
 ## Chapters
 
