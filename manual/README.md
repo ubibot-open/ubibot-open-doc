@@ -7,7 +7,7 @@ If you already know your way around a shell and just want the commands, the
 [deployment, flashing & bring-up guide](../guides/deployment-flashing-guide.md) is a faster,
 denser reference covering the same ground. This manual is for the first time through.
 
-> **Status:** Chapters 1–4 are written. The rest are outline-only stubs for now — the writing is
+> **Status:** All chapters are written. The rest are outline-only stubs for now — the writing is
 > happening one chapter at a time; see each page for its current state.
 
 ## Part A — Getting Started

@@ -54,8 +54,10 @@ Two related but distinct pages:
 
 ### Alert
 
-Two tabs: the alert rules you've configured per device/field, and the alert events they've fired
-(with a resolve action). Covered in [chapter 10](10-alerts.md).
+A single list of alert *events* — occurrences of a rule firing, or a device going offline — with
+filters by device and status (open/resolved/all), and a Resolve action. Alert *rules* themselves
+aren't configured here; they're set per device, per field, from that device's own Detail page
+(**Device Management → Device → [a device] → Detail**). Covered in [chapter 10](10-alerts.md).
 
 ### System
 
