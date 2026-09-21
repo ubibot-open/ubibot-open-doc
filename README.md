@@ -13,10 +13,6 @@ Configuration and technical documentation repository for the UbiBot Open project
 - [Developer Handbook](dev-guide/README.md) ([中文](dev-guide/README.zh-CN.md)) — task-oriented walkthroughs for modifying the platform's code: adding an API endpoint, a data model, an admin console page, or a new firmware command.
 - [Admin API Reference](api/admin-api.md) ([中文](api/admin-api.zh-CN.md)) / [Open API Reference](api/open-api.md) ([中文](api/open-api.zh-CN.md)) — every HTTP route the backend exposes, for the admin console's own API and the read-only third-party integration surface respectively.
 
-Every doc in this repo now ships a Chinese translation alongside the English original — every
-translated file has a language-switcher link at the top (`*[中文](...)*` / `*[English](...)*`)
-pointing at its counterpart. The one exception is this org's `.github` repo's own
-`CONTRIBUTING.md`/`CODE_OF_CONDUCT.md`, which stay English-only for now.
 
 ## Related Repositories
 
@@ -94,11 +90,6 @@ Not seeing the device? Walk through the guide's
 > **No hardware?** [ubibot-open-simulator](https://github.com/ubibot-open/ubibot-open-simulator)
 > is a pure-C device simulator with protocol behavior identical to the real firmware, letting you
 > verify the server and dashboard without steps 2–3. See guide §6.
-
-## Contributing
-
-Documentation fixes and additions are welcome — see the
-[org-wide CONTRIBUTING.md](https://github.com/ubibot-open/.github/blob/main/CONTRIBUTING.md).
 
 ## License
 

@@ -13,10 +13,6 @@ UbiBot Open 项目（`ubibot-open` 组织）的配置与技术文档仓库：存
 - [开发者手册](dev-guide/README.zh-CN.md)（[English](dev-guide/README.md)）—— 任务导向的教程，讲怎么修改平台代码：加一个 API 端点、加一个数据模型、加一个后台页面，或者加一个新的固件指令。
 - [管理后台 API 参考](api/admin-api.zh-CN.md)（[English](api/admin-api.md)） / [开放 API 参考](api/open-api.zh-CN.md)（[English](api/open-api.md)）—— 后端暴露的每一个 HTTP 路由，分别对应管理控制台自己用的接口和面向第三方的只读接口。
 
-这个仓库现在主要的文档（架构总览、协议、部署指南、用户手册、开发者手册、两份 API 参考）都配了
-中文翻译——每个有翻译的文件顶部都有一行语言切换链接（`*[中文](...)*` / `*[English](...)*`），指向
-对应的另一个语言版本。`.github` 组织级的 `CONTRIBUTING.md`/`CODE_OF_CONDUCT.md` 目前还没有
-中文版。
 
 ## 相关仓库
 
@@ -91,11 +87,6 @@ idf.py -p <port> flash monitor
 > 是一个纯 C 的设备模拟器，协议行为跟真实固件完全一致，让你不用走第 2-3 步就能验证服务端和仪表盘。
 > 详见指南 §6。
 
-## 贡献
-
-欢迎修复和补充文档——见
-[组织级 CONTRIBUTING.md](https://github.com/ubibot-open/.github/blob/main/CONTRIBUTING.md)
-（暂无中文版）。
 
 ## License
 
