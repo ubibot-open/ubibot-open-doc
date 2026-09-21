@@ -164,5 +164,4 @@ These aren't written down in one place elsewhere, so worth stating explicitly:
   setup for all three components.
 - [Admin API Reference](../api/admin-api.md) / [Open API Reference](../api/open-api.md) — every
   HTTP route the backend exposes.
-- [CONTRIBUTING.md](https://github.com/ubibot-open/.github/blob/main/CONTRIBUTING.md) — how to
-  propose or submit a change.
+

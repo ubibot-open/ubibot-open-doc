@@ -100,10 +100,3 @@ schema, mirrors exactly what the device reported.
 curl -H "X-Api-Key: <your key>" \
   "http://localhost:8080/api/open/v1/devices/1/records?start=1788950000&end=1788960000"
 ```
-
-## What's not here
-
-No write endpoints (rename/disable/delete/command a device), no alerts, no products — those are
-admin-console actions with real side effects, gated by RBAC rather than a flat API key; see the
-[Admin API Reference](admin-api.md) if you need them and are comfortable driving the same API the
-console itself uses.

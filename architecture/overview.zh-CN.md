@@ -155,5 +155,4 @@ app_driver/         外设驱动：WiFi（wifi_connect.c）、HTTP 客户端（h
   实操搭建说明。
 - [管理后台 API 参考](../api/admin-api.zh-CN.md) / [开放 API 参考](../api/open-api.zh-CN.md)
   —— 后端暴露的每一个 HTTP 路由。
-- [CONTRIBUTING.md](https://github.com/ubibot-open/.github/blob/main/CONTRIBUTING.md)（暂无
-  中文版）—— 怎么提出或提交一个改动。
+

@@ -17,8 +17,6 @@
 6. [固件：新增串口配网指令](06-firmware-add-serial-command.zh-CN.md)
 7. [固件：新增服务端下发指令](07-firmware-add-server-command.zh-CN.md)
 8. [用模拟器迭代后端](08-testing-with-the-simulator.zh-CN.md)
-9. [修改通信协议](09-protocol-changes.zh-CN.md)
-10. [贡献与 PR 规范](10-contributing-and-pr-conventions.zh-CN.md)
 
 ## 另见
 

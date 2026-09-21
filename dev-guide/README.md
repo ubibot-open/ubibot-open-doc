@@ -20,8 +20,6 @@ pieces fit together; this handbook assumes that context and gets straight to "ho
 6. [Firmware: Add a Serial Provisioning Command](06-firmware-add-serial-command.md)
 7. [Firmware: Add a Server-Issued Command](07-firmware-add-server-command.md)
 8. [Iterate on the Backend with the Simulator](08-testing-with-the-simulator.md)
-9. [Changing the Protocol](09-protocol-changes.md)
-10. [Contributing and PR Conventions](10-contributing-and-pr-conventions.md)
 
 ## See also
 
