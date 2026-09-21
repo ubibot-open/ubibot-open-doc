@@ -1,5 +1,7 @@
 # UbiBot Open Doc
 
+*[中文](README.zh-CN.md)*
+
 Configuration and technical documentation repository for the UbiBot Open project (`ubibot-open` org): documentation that spans multiple repos and doesn't belong in any single code repo — the device communication protocol, the system deployment/flashing/bring-up guide, and so on.
 
 ## Contents
@@ -11,10 +13,10 @@ Configuration and technical documentation repository for the UbiBot Open project
 - [Developer Handbook](dev-guide/README.md) ([中文](dev-guide/README.zh-CN.md)) — task-oriented walkthroughs for modifying the platform's code: adding an API endpoint, a data model, an admin console page, or a new firmware command.
 - [Admin API Reference](api/admin-api.md) / [Open API Reference](api/open-api.md) — every HTTP route the backend exposes, for the admin console's own API and the read-only third-party integration surface respectively.
 
-Most of this repo is English-only; the **User Manual** and **Developer Handbook** are the
-exception and ship a Chinese translation alongside the English original — every chapter file has
-a language-switcher link at the top (`*[中文](...)*` / `*[English](...)*`) pointing at its
-counterpart.
+Most of this repo is English-only; this page, the **User Manual**, and the **Developer Handbook**
+are the exception and ship a Chinese translation alongside the English original — every
+translated file has a language-switcher link at the top (`*[中文](...)*` / `*[English](...)*`)
+pointing at its counterpart.
 
 ## Related Repositories
 
