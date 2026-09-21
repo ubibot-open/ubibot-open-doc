@@ -1,5 +1,7 @@
 # UbiBot Open Platform Hardware Communication Protocol
 
+*[中文](hardware-communication-protocol.zh-CN.md)*
+
 ### 0. Project Scope & Rationale for This Revision
 
 This project (ubibot-open) is an open-source IoT platform meant for internal/educational use — it

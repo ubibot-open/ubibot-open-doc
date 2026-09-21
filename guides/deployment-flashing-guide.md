@@ -1,5 +1,7 @@
 # UbiBot Open — System Deployment, Flashing & Bring-up Guide
 
+*[中文](deployment-flashing-guide.zh-CN.md)*
+
 This document is for anyone who wants to wire together the three repositories —
 `ubibot-open-server`, `ubibot-open-ws1b`, and `ubibot-serial-sync` — and go from zero to a
 complete "device online → reporting data → visible on the dashboard" pipeline. For the

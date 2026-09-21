@@ -2,7 +2,7 @@
 
 *[English](README.md)*
 
-从零开始的教程式指南，每一步都配截图。如果你已经熟悉命令行、只想要命令本身，《[部署、烧录与上电指南](../guides/deployment-flashing-guide.md)》是覆盖同样内容的更快、更精炼的速查文档。这份手册是给第一次接触的人看的。
+从零开始的教程式指南，每一步都配截图。如果你已经熟悉命令行、只想要命令本身，《[部署、烧录与上电指南](../guides/deployment-flashing-guide.zh-CN.md)》是覆盖同样内容的更快、更精炼的速查文档。这份手册是给第一次接触的人看的。
 
 > **状态：** 所有章节都已经写完。其余章节暂时还是占位内容——正在按章节逐个撰写，具体进度见各章节页面。
 
@@ -37,4 +37,4 @@
 ## 另见
 
 - [开发者手册](../dev-guide/README.zh-CN.md) —— 面向修改平台代码，而不只是使用平台。
-- [架构总览](../architecture/overview.md)、[硬件通信协议](../protocol/hardware-communication-protocol.md)、[管理后台 API 参考](../api/admin-api.md)、[开放 API 参考](../api/open-api.md)（暂无中文版）。
+- [架构总览](../architecture/overview.zh-CN.md)、[硬件通信协议](../protocol/hardware-communication-protocol.zh-CN.md)、[管理后台 API 参考](../api/admin-api.zh-CN.md)、[开放 API 参考](../api/open-api.zh-CN.md)。

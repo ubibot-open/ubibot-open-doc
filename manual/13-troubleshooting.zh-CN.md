@@ -20,7 +20,7 @@
 | `c` 码 | 原因 | 解决办法 |
 |---|---|---|
 | `1002` | 时间戳超出了 ±5 分钟的窗口 | 设备的时钟漂移了——确认它在收到这个错误之后会调用时间同步接口重新校准 |
-| `1003` | 请求体格式不对 | 固件序列化那边有 bug——对照[协议 §5](../protocol/hardware-communication-protocol.md#5-data-upload-the-only-device-facing-data-endpoint) 检查 |
+| `1003` | 请求体格式不对 | 固件序列化那边有 bug——对照[协议 §5](../protocol/hardware-communication-protocol.zh-CN.md#5-数据上报唯一面向设备的数据接口) 检查 |
 | `1103` | 设备被管理员停用了 | 去设备的详情页重新启用它——见[第 8 章](08-managing-devices-and-products.zh-CN.md) |
 | `1900` | 被限速了 | 上报频率超过了配置的上限（[第 12 章](12-system-settings-and-monitor.zh-CN.md)的参数页面）；等下一个周期，或者检查是不是有异常的重试循环 |
 
@@ -51,9 +51,9 @@
 ## 还是没解决？
 
 完整的错误码表在协议文档的
-[§8 错误处理](../protocol/hardware-communication-protocol.md#8-error-handling)里；admin API
+[§8 错误处理](../protocol/hardware-communication-protocol.zh-CN.md#8-错误处理)里；admin API
 的错误响应格式（包括管理控制台用来映射成翻译文案的那些稳定 `code` 字符串）在
-[api/admin-api.md](../api/admin-api.md)里。如果这两份都没解释清楚你遇到的问题，去对应的仓库
+[api/admin-api.md](../api/admin-api.zh-CN.md)里。如果这两份都没解释清楚你遇到的问题，去对应的仓库
 开一个 issue。
 
 ---

@@ -1,5 +1,7 @@
 # Open API Reference
 
+*[中文](open-api.zh-CN.md)*
+
 A small, read-only, API-key-authenticated surface for third-party integrations — the "RESTful
 API for secondary development" the org profile advertises. If you're building the bundled admin
 console's own alternative, or automating something an admin could otherwise click through, you

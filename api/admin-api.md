@@ -1,5 +1,7 @@
 # Admin API Reference
 
+*[中文](admin-api.zh-CN.md)*
+
 This is the API the bundled admin console itself talks to — every route below lives under
 `/api/admin/*` on the same address the console's UI is served from (`http://<host>:8080` by
 default). Useful if you're building an alternative frontend, scripting a bulk operation, or just

@@ -95,11 +95,11 @@ cJSON_AddNumberToObject(json_arry,field,sMsg.sensorval);
 ## 5. 顺手在后台给它起个好认的名字（可选）
 
 后端和管理控制台并不知道 `field8` 是什么意思——对它们来说就是一个数字（见
-《[架构总览](../architecture/overview.md)》里"没有固定 schema"那条说明）。如果你想让它显示成一个
+《[架构总览](../architecture/overview.zh-CN.md)》里"没有固定 schema"那条说明）。如果你想让它显示成一个
 真正的名字/单位/图标而不是"Field 8"，去后台配一下：可以在图标库（System → Icons，
 `GET/POST /api/admin/icons`）里给这款固件的所有设备设个默认值，也可以针对单台设备单独覆盖
 （`GET/POST /api/admin/devices/{id}/field-settings`）——见
-[api/admin-api.md](../api/admin-api.md)。
+[api/admin-api.md](../api/admin-api.zh-CN.md)。
 
 ## 检查清单
 

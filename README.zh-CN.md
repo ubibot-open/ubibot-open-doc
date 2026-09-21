@@ -6,16 +6,17 @@ UbiBot Open 项目（`ubibot-open` 组织）的配置与技术文档仓库：存
 
 ## 目录
 
-- [架构总览](architecture/overview.md) —— 五个仓库是怎么拼起来的：系统图、数据流、后端/固件内部目录结构，以及这套代码依赖的设计原则。
-- [硬件通信协议](protocol/hardware-communication-protocol.md) —— 设备↔服务端 HTTP 协议的权威定义：配网、时间同步、数据上报、错误码等等。
-- [系统部署、烧录与上电指南](guides/deployment-flashing-guide.md) —— 从零开始到"后端部署完成 → 固件烧录完成 → 串口调试 → 设备上线并上报 → 仪表盘可见"的实操参考。
+- [架构总览](architecture/overview.zh-CN.md)（[English](architecture/overview.md)）—— 五个仓库是怎么拼起来的：系统图、数据流、后端/固件内部目录结构，以及这套代码依赖的设计原则。
+- [硬件通信协议](protocol/hardware-communication-protocol.zh-CN.md)（[English](protocol/hardware-communication-protocol.md)）—— 设备↔服务端 HTTP 协议的权威定义：配网、时间同步、数据上报、错误码等等。
+- [系统部署、烧录与上电指南](guides/deployment-flashing-guide.zh-CN.md)（[English](guides/deployment-flashing-guide.md)）—— 从零开始到"后端部署完成 → 固件烧录完成 → 串口调试 → 设备上线并上报 → 仪表盘可见"的实操参考。
 - [用户手册](manual/README.zh-CN.md)（[English](manual/README.md)）—— 和部署指南走的是同一条路径，但是教程式的、配截图，外加日常使用管理控制台的内容（设备、产品、指令、告警、用户、API 密钥）。
 - [开发者手册](dev-guide/README.zh-CN.md)（[English](dev-guide/README.md)）—— 任务导向的教程，讲怎么修改平台代码：加一个 API 端点、加一个数据模型、加一个后台页面，或者加一个新的固件指令。
-- [管理后台 API 参考](api/admin-api.md) / [开放 API 参考](api/open-api.md) —— 后端暴露的每一个 HTTP 路由，分别对应管理控制台自己用的接口和面向第三方的只读接口（暂无中文版）。
+- [管理后台 API 参考](api/admin-api.zh-CN.md)（[English](api/admin-api.md)） / [开放 API 参考](api/open-api.zh-CN.md)（[English](api/open-api.md)）—— 后端暴露的每一个 HTTP 路由，分别对应管理控制台自己用的接口和面向第三方的只读接口。
 
-这个仓库大部分内容只有英文版；这个页面、**用户手册**和**开发者手册**是例外，都在英文原文旁边配了
+这个仓库现在主要的文档（架构总览、协议、部署指南、用户手册、开发者手册、两份 API 参考）都配了
 中文翻译——每个有翻译的文件顶部都有一行语言切换链接（`*[中文](...)*` / `*[English](...)*`），指向
-对应的另一个语言版本。
+对应的另一个语言版本。`.github` 组织级的 `CONTRIBUTING.md`/`CODE_OF_CONDUCT.md` 目前还没有
+中文版。
 
 ## 相关仓库
 
@@ -31,7 +32,7 @@ UbiBot Open 项目（`ubibot-open` 组织）的配置与技术文档仓库：存
 
 按下面 4 步，从零走到"服务端跑起来 → 硬件烧录完成 → 通过网络上报 → 数据在仪表盘可见"。每一步的
 详细说明、可选参数和故障排查见
-[部署、烧录与上电指南](guides/deployment-flashing-guide.md)——或者看
+[部署、烧录与上电指南](guides/deployment-flashing-guide.zh-CN.md)——或者看
 [用户手册](manual/README.zh-CN.md)，同样的步骤但配了截图。手头没有硬件？直接跳到第 4 步前面的
 "没有硬件？"——用[设备模拟器](https://github.com/ubibot-open/ubibot-open-simulator)自己就能走完
 第 1 步和第 4 步。
@@ -83,7 +84,7 @@ idf.py -p <port> flash monitor
 不需要提前创建设备。点进去看最新读数，或者去"数据仓库"页面看每台设备的最新记录。
 
 没看到设备？照着指南的
-[端到端验证](guides/deployment-flashing-guide.md#5-end-to-end-verification-device-online-and-reporting)
+[端到端验证](guides/deployment-flashing-guide.zh-CN.md#5-端到端验证设备上线并上报)
 走一遍——三个核对点（WiFi 已连接 → 上报成功 → 仪表盘可见）。
 
 > **没有硬件？** [ubibot-open-simulator](https://github.com/ubibot-open/ubibot-open-simulator)

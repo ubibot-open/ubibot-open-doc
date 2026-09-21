@@ -6,17 +6,17 @@ Configuration and technical documentation repository for the UbiBot Open project
 
 ## Contents
 
-- [Architecture Overview](architecture/overview.md) — how the five repos fit together: system diagram, data flow, backend/firmware internal layout, and the design principles the codebase leans on.
-- [Hardware Communication Protocol](protocol/hardware-communication-protocol.md) — the authoritative definition of the device↔server HTTP protocol: provisioning, time sync, data upload, error codes, and more.
-- [System Deployment, Flashing & Bring-up Guide](guides/deployment-flashing-guide.md) — a hands-on reference for going from zero to "backend deployed → firmware flashed → serial debugging → device online and reporting → visible on the dashboard".
+- [Architecture Overview](architecture/overview.md) ([中文](architecture/overview.zh-CN.md)) — how the five repos fit together: system diagram, data flow, backend/firmware internal layout, and the design principles the codebase leans on.
+- [Hardware Communication Protocol](protocol/hardware-communication-protocol.md) ([中文](protocol/hardware-communication-protocol.zh-CN.md)) — the authoritative definition of the device↔server HTTP protocol: provisioning, time sync, data upload, error codes, and more.
+- [System Deployment, Flashing & Bring-up Guide](guides/deployment-flashing-guide.md) ([中文](guides/deployment-flashing-guide.zh-CN.md)) — a hands-on reference for going from zero to "backend deployed → firmware flashed → serial debugging → device online and reporting → visible on the dashboard".
 - [User Manual](manual/README.md) ([中文](manual/README.zh-CN.md)) — the same journey as the deployment guide, but tutorial-style with screenshots, plus day-to-day admin console usage (devices, products, commands, alerts, users, API keys).
 - [Developer Handbook](dev-guide/README.md) ([中文](dev-guide/README.zh-CN.md)) — task-oriented walkthroughs for modifying the platform's code: adding an API endpoint, a data model, an admin console page, or a new firmware command.
-- [Admin API Reference](api/admin-api.md) / [Open API Reference](api/open-api.md) — every HTTP route the backend exposes, for the admin console's own API and the read-only third-party integration surface respectively.
+- [Admin API Reference](api/admin-api.md) ([中文](api/admin-api.zh-CN.md)) / [Open API Reference](api/open-api.md) ([中文](api/open-api.zh-CN.md)) — every HTTP route the backend exposes, for the admin console's own API and the read-only third-party integration surface respectively.
 
-Most of this repo is English-only; this page, the **User Manual**, and the **Developer Handbook**
-are the exception and ship a Chinese translation alongside the English original — every
+Every doc in this repo now ships a Chinese translation alongside the English original — every
 translated file has a language-switcher link at the top (`*[中文](...)*` / `*[English](...)*`)
-pointing at its counterpart.
+pointing at its counterpart. The one exception is this org's `.github` repo's own
+`CONTRIBUTING.md`/`CODE_OF_CONDUCT.md`, which stay English-only for now.
 
 ## Related Repositories
 

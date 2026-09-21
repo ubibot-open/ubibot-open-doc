@@ -11,7 +11,7 @@
 
 - **Bug 修复或小改动**：直接开 PR。
 - **新功能，或者任何跨仓库改变行为的东西**（协议改动、新的 API 端点、新的后台页面）：先开一个
-  issue。这个项目刻意保持精简（见《[架构总览](../architecture/overview.md)》的设计原则，以及
+  issue。这个项目刻意保持精简（见《[架构总览](../architecture/overview.zh-CN.md)》的设计原则，以及
   《[手册说明](00-overview.zh-CN.md)》关于范围的说明）——先确认方向能省得你重写一遍 PR。
 - **纯文档改动**：直接对
   [ubibot-open-doc](https://github.com/ubibot-open/ubibot-open-doc) 开 PR。

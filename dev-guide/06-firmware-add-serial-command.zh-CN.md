@@ -118,7 +118,7 @@ static void prov_handle_setup_device(const cJSON *root)
 ## 别忘了协议文档
 
 新加一个指令就是改了通信协议——要写进
-[protocol/hardware-communication-protocol.md](../protocol/hardware-communication-protocol.md)
+[protocol/hardware-communication-protocol.md](../protocol/hardware-communication-protocol.zh-CN.md)
 的 §1.2，照着现有 `SetupWifi`/`SetupServer`/`SetupDevice` 的表格格式来（请求 JSON 的形状、一个
 字段表，以及它跟应答格式的关系）。这份文档也正是
 [ubibot-serial-sync](https://github.com/ubibot-open/ubibot-serial-sync) 用户查"该往手动发送框里

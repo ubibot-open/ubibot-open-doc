@@ -3,7 +3,7 @@
 *[English](09-protocol-changes.md)*
 
 "协议"指的是设备↔后端之间的 HTTP 通信格式，记录在
-《[protocol/hardware-communication-protocol.md](../protocol/hardware-communication-protocol.md)》
+《[protocol/hardware-communication-protocol.md](../protocol/hardware-communication-protocol.zh-CN.md)》
 的 §1-9——请求/响应的 JSON 格式、错误码、串口配网指令，以及 §9 的指令通道。改协议跟本手册里其他
 每一章都不一样：这是唯一一个固件仓库和后端仓库必须真正互相对齐、而不是各自独立构建测试通过就行
 的地方。
@@ -64,7 +64,7 @@
    `provisioning.c`，§9 指向 `command.c`）——这些不是强制要求完全对得上（文档写的是"鼓励……但不
    强制"），但它们是这个项目自己的测试真正跑过的实现，所以要保持它们说的是实话。
 4. 如果这个改动同时也影响了某个后台触发的接口（就像 §9 的指令那样），更新
-   [api/admin-api.md](../api/admin-api.md)。
+   [api/admin-api.md](../api/admin-api.zh-CN.md)。
 
 ## 下一步
 

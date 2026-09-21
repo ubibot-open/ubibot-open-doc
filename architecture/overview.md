@@ -1,5 +1,7 @@
 # UbiBot Open — Architecture Overview
 
+*[中文](overview.zh-CN.md)*
+
 This is the "how does it all fit together" document. For step-by-step setup see the
 [deployment, flashing & bring-up guide](../guides/deployment-flashing-guide.md); for the exact
 wire format see the [hardware communication protocol](../protocol/hardware-communication-protocol.md).

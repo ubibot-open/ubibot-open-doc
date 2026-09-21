@@ -2,7 +2,7 @@
 
 *[English](README.md)*
 
-面向"怎么改代码"的任务型教程，而不是怎么用平台。如果还没读过，建议先看《[架构总览](../architecture/overview.md)》——那篇讲清楚了各部分是怎么拼起来的；这本手册假定你已经有这个背景，直接进入"我想加 X，该怎么做"。
+面向"怎么改代码"的任务型教程，而不是怎么用平台。如果还没读过，建议先看《[架构总览](../architecture/overview.zh-CN.md)》——那篇讲清楚了各部分是怎么拼起来的；这本手册假定你已经有这个背景，直接进入"我想加 X，该怎么做"。
 
 > **状态：** 所有章节都已经写完。其余章节暂时还是占位内容——正在按章节逐个撰写，具体进度见各章节页面。
 
@@ -23,5 +23,5 @@
 ## 另见
 
 - [用户手册](../manual/README.zh-CN.md) —— 面向使用平台，而不是修改代码。
-- [架构总览](../architecture/overview.md)、[硬件通信协议](../protocol/hardware-communication-protocol.md)、[管理后台 API 参考](../api/admin-api.md)、[开放 API 参考](../api/open-api.md)（暂无中文版）。
+- [架构总览](../architecture/overview.zh-CN.md)、[硬件通信协议](../protocol/hardware-communication-protocol.zh-CN.md)、[管理后台 API 参考](../api/admin-api.zh-CN.md)、[开放 API 参考](../api/open-api.zh-CN.md)。
 - [组织级 CONTRIBUTING.md](https://github.com/ubibot-open/.github/blob/main/CONTRIBUTING.md)（暂无中文版）。

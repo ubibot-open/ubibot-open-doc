@@ -3,7 +3,7 @@
 *[English](00-overview.md)*
 
 这本手册是一组任务导向的改代码教程——回答的是"我想加 X，该怎么做"，而不是"系统是怎么搭起来的"。
-如果还没看过，建议先读《[架构总览](../architecture/overview.md)》——那篇讲清楚了五个仓库、它们
+如果还没看过，建议先读《[架构总览](../architecture/overview.zh-CN.md)》——那篇讲清楚了五个仓库、它们
 之间怎么通信、从设备到仪表盘的请求流程，以及这个代码库依赖的设计原则。这本手册假定你已经有这个
 背景。
 
@@ -18,8 +18,8 @@
    一个固件函数）。
 2. **接进去**——注册路由、菜单项、CMake 源文件列表，或者任何能让新代码真正被调用到的地方。
 3. **更新相关文档**，如果这个改动影响到了别处已经记录的东西：新增的 `/api/admin/*` 路由要写进
-   [api/admin-api.md](../api/admin-api.md)；协议格式的改动要写进
-   [protocol/hardware-communication-protocol.md](../protocol/hardware-communication-protocol.md)。
+   [api/admin-api.md](../api/admin-api.zh-CN.md)；协议格式的改动要写进
+   [protocol/hardware-communication-protocol.md](../protocol/hardware-communication-protocol.zh-CN.md)。
 4. **补充或扩展测试**，通过改动真实的入口去验证它（对着路由发一个 HTTP 请求，而不是直接调用
    Go 函数），前提是现有代码里那个位置本来就有这种测试覆盖。
 5. **用真实工具链验证**——`go build`/`go test`、`npm run build`/`npm run lint`、真的跑一次
@@ -27,7 +27,7 @@
 
 ## 关于范围的一点说明
 
-这个项目刻意保持了一个较窄的范围——见《[架构总览](../architecture/overview.md)》设计原则那一节
+这个项目刻意保持了一个较窄的范围——见《[架构总览](../architecture/overview.zh-CN.md)》设计原则那一节
 里记录的几条既定决策（默认最小化、宁可"发了不保证送达"也不做确认重试、不打算做第二款硬件）。
 如果本手册某一章教你怎么扩展某个功能，不代表这个扩展就一定适合直接提交回这个项目——不确定的话，
 先开一个 issue 说明你想加什么，再动手做。
